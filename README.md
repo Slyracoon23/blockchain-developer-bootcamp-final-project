@@ -28,7 +28,7 @@ Defi Legos aims to provide smart-contract building capabilites to people with li
 [Truffle Suite](https://www.trufflesuite.com/)
 
 
-## Getting Stated
+## Getting Started
 ** TODO **
 ### Prerequisites
 **  TODO **
