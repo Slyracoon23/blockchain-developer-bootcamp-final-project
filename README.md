@@ -52,7 +52,7 @@ Earl Potters - earl.potters@gmail.com
 
 Project Link: https://github.com/Slyracoon23/blockchain-developer-bootcamp-final-project
 ## Acknowledgements
-* [Readme Template] (https://github.com/othneildrew/Best-README-Template)
+* [Readme Template](https://github.com/othneildrew/Best-README-Template)
 
 
 
