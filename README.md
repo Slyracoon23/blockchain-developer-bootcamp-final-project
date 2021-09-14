@@ -23,8 +23,6 @@ Defi Legos aims to provide smart-contract building capabilites to people with li
 
 [Ethereum Blockchain](https://ethereum.org/)
 
-[IPFS Protocol](https://www.ipfs.com/)
-
 [Truffle Suite](https://www.trufflesuite.com/)
 
 
