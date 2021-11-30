@@ -1,0 +1,5 @@
+network: ropsten
+
+
+contract Name: Card
+contract address: 0x3ceA65f6cDf42873b01b6Af9889F98D2321f0C5d
