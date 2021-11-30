@@ -1,6 +1,7 @@
 
 
 const mintButton = document.querySelector('#mint-cards-btn');
+const backButton = document.querySelector('#customization-tab-btn');
 const mintSection = document.querySelector('#mint-cards');
 const mintCardBank = document.querySelector("#mint-card-deck");
 var mintCards = [];
@@ -37,8 +38,10 @@ function createCard(index, num, container_elem, cards){
         console.log(`Minting index: ${index}, card: ${card_data.name} `);
         MintCard(index).then( result => {
 
-            console.log(`Minted tokenId: ${result}`)
-
+            console.log(`Minted tokenId: ${result}`);
+            
+            // Reload Viewable Cards
+            dm.makeYourDeck(dm.faction);
 
         });
 
@@ -50,14 +53,24 @@ function createCard(index, num, container_elem, cards){
 
 mintButton.addEventListener('click', () => {
     mintSection.removeAttribute("hidden");
-    // createCard(2, 1, mintSection, mintCards);
 
 });
 
-createCard(2, 1, mintCardBank, mintCards);
-createCard(3, 1, mintCardBank, mintCards);
-createCard(4, 1, mintCardBank, mintCards);
-createCard(5, 1, mintCardBank, mintCards);
-createCard(6, 1, mintCardBank, mintCards);
-createCard(7, 1, mintCardBank, mintCards);
-createCard(8, 1, mintCardBank, mintCards);
+backButton.addEventListener('click', () => {
+    mintSection.setAttribute("hidden", true);
+
+});
+
+for(let i =0; i<= 213; i++){
+    createCard(i, 1, mintCardBank, mintCards);
+
+}
+
+
+// createCard(2, 1, mintCardBank, mintCards);
+// createCard(3, 1, mintCardBank, mintCards);
+// createCard(4, 1, mintCardBank, mintCards);
+// createCard(5, 1, mintCardBank, mintCards);
+// createCard(6, 1, mintCardBank, mintCards);
+// createCard(7, 1, mintCardBank, mintCards);
+// createCard(8, 1, mintCardBank, mintCards);

@@ -2261,7 +2261,8 @@ class DeckMaker {
 			// filter cards that you have in deck
 			.filter(p => NFTs.includes(p.index))
 			.filter(
-			p => [faction, "neutral", "weather", "special"].includes(p.card.deck) && p.card.row !== "leader");
+			//p => [faction, "neutral", "weather", "special"].includes(p.card.deck) && p.card.row !== "leader");
+			p => p.card.row !== "leader");
 
 			
 			cards.sort( function(id1, id2) {

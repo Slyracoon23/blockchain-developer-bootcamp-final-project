@@ -114,10 +114,33 @@ async function MintCard(index) {
 
 // Call start
 
+
+ethereumButton.addEventListener('click', () => {
+  //Will Start the metamask extension
+  window.ethereum.request({ method: 'eth_requestAccounts'});
+
+  // console.log(accounts)
+  // Add if statement if not correct network
+
+  // change to Ropsten
+  window.ethereum.request({
+    method: 'wallet_switchEthereumChain',
+    params: [{ chainId: '0x3'}], // chainId must be in hexadecimal numbers, Chain ID 1337
+  });
+
+  
+
+
+  });
+
+
 (async() => {
 
 
 })();
+
+
+
 // console.log( result );
 
 // var account = await web3.eth.getAccounts()[0];
