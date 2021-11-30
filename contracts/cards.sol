@@ -22,6 +22,10 @@ contract Card is ERC721Full, Ownable {
     uint256 internal constant MAX_LENGTH = uint(2**256 - 1);
 
     Counters.Counter public _tokenIds;
+
+    bool private _mint_alive = false;
+
+    uint256 private maxSupply = 100;
   
     struct Gwent_Card {
         // name of card
@@ -75,10 +79,12 @@ contract Card is ERC721Full, Ownable {
         external
         returns (uint tokenId)
     {
+        require(_mint_alive == true, "mint_alive: must be set to true");
         require(
             _to != address(0),
             "Cards: must not be null"
         );
+        require((_card > 0 && _card <= maxSupply), "Minting NFTs more than maxSupply is not allowed.");
         _tokenIds.increment();
 
         uint256 newtokenId = _tokenIds.current();
@@ -102,6 +108,17 @@ contract Card is ERC721Full, Ownable {
         returns (uint16 gwentCard)
     {
         return gwentCards[tokenId];
+    }
+
+    function setMintAlive(
+        bool value
+    )
+    public
+    onlyOwner
+    returns (bool alive)
+    {
+        _mint_alive = value;
+        return _mint_alive;
     }
 
   
