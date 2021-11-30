@@ -23,7 +23,6 @@ contract testSuite {
         // <instantiate contract>
         cardToTest = new Card("");
 
-        Assert.equal(uint(1), uint(1), "1 should be equal to 1");
     }
 
 
@@ -36,11 +35,13 @@ contract testSuite {
     function checkMint() public {
         // Use 'Assert' methods: https://remix-ide.readthedocs.io/en/latest/assert_library.html
          uint256 tokenId = cardToTest._tokenIds();
+         cardToTest.setMintAlive(true);
          uint256 new_tokenId = cardToTest.mintCard(address(0x1), uint16(1));
          Assert.equal(new_tokenId, tokenId + 1, "After successful mint tokenId increases by 1");
     }
 
     function checkGetDetails() public {
+        cardToTest.setMintAlive(true);
         uint256 new_tokenId = cardToTest.mintCard(address(0x1), uint16(5));
         uint16 value = cardToTest.getDetails(new_tokenId);
 
@@ -48,12 +49,7 @@ contract testSuite {
 
     }
 
-    function checkSuccess2() public pure returns (bool) {
-        // Use the return value (true or false) to test the contract
-        return true;
-    }
-    
-    function chectMintToZeroAddress() public {
+   function chectMintWithoutAlive() public {
          uint256 tokenId = cardToTest._tokenIds();
          try cardToTest.mintCard(address(0x0), uint16(1)) returns (uint new_tokenId) {
             Assert.equal(new_tokenId, tokenId + 1 , "Wrong output");
@@ -61,7 +57,26 @@ contract testSuite {
             // This is executed in case
             // revert was called inside getData
             // and a reason string was provided.
-            Assert.ok(false, "failed with reason");
+            Assert.ok(true, "failed with reason");
+        } catch (bytes memory /*lowLevelData*/) {
+            // This is executed in case revert() was used
+            // or there was a failing assertion, division
+            // by zero, etc. inside getData.
+            Assert.ok(false, "failed unexpected");
+        }
+    }
+
+    function chectMintToZeroAddress() public {
+         uint256 tokenId = cardToTest._tokenIds();
+         cardToTest.setMintAlive(true);
+
+         try cardToTest.mintCard(address(0x0), uint16(1)) returns (uint new_tokenId) {
+            Assert.equal(new_tokenId, tokenId + 1 , "Wrong output");
+        } catch Error(string memory /*reason*/) {
+            // This is executed in case
+            // revert was called inside getData
+            // and a reason string was provided.
+            Assert.ok(true, "failed with reason");
         } catch (bytes memory /*lowLevelData*/) {
             // This is executed in case revert() was used
             // or there was a failing assertion, division
@@ -71,11 +86,21 @@ contract testSuite {
     }
 
     /// Custom Transaction Context: https://remix-ide.readthedocs.io/en/latest/unittesting.html#customization
-    /// #sender: account-1
-    /// #value: 100
-    function checkSenderAndValue() public payable {
-        // account index varies 0-9, value is in wei
-        Assert.equal(msg.sender, TestsAccounts.getAccount(1), "Invalid sender");
-        Assert.equal(msg.value, 100, "Invalid value");
+    function chectMintOutOfBounds() public {
+         uint256 tokenId = cardToTest._tokenIds();
+         cardToTest.setMintAlive(true);
+         try cardToTest.mintCard(address(0x0), uint16(101)) returns (uint new_tokenId) {
+            Assert.equal(new_tokenId, tokenId + 1 , "Wrong output");
+        } catch Error(string memory /*reason*/) {
+            // This is executed in case
+            // revert was called inside getData
+            // and a reason string was provided.
+            Assert.ok(true, "failed with reason");
+        } catch (bytes memory /*lowLevelData*/) {
+            // This is executed in case revert() was used
+            // or there was a failing assertion, division
+            // by zero, etc. inside getData.
+            Assert.ok(false, "failed unexpected");
+        }
     }
 }
