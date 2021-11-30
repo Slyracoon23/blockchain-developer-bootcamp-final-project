@@ -89,7 +89,7 @@ contract testSuite {
     function chectMintOutOfBounds() public {
          uint256 tokenId = cardToTest._tokenIds();
          cardToTest.setMintAlive(true);
-         try cardToTest.mintCard(address(0x0), uint16(101)) returns (uint new_tokenId) {
+         try cardToTest.mintCard(address(0x0), uint16(214)) returns (uint new_tokenId) {
             Assert.equal(new_tokenId, tokenId + 1 , "Wrong output");
         } catch Error(string memory /*reason*/) {
             // This is executed in case

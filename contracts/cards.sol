@@ -25,7 +25,8 @@ contract Card is ERC721Full, Ownable {
 
     bool private _mint_alive = false;
 
-    uint256 private maxSupply = 100;
+    // Number of Gwent cards Avaiable
+    uint256 private maxSupply = 213;
   
     struct Gwent_Card {
         // name of card
@@ -84,7 +85,7 @@ contract Card is ERC721Full, Ownable {
             _to != address(0),
             "Cards: must not be null"
         );
-        require((_card > 0 && _card <= maxSupply), "Minting NFTs more than maxSupply is not allowed.");
+        require((_card >= 0 && _card <= maxSupply), "Minting NFTs more than maxSupply is not allowed.");
         _tokenIds.increment();
 
         uint256 newtokenId = _tokenIds.current();
