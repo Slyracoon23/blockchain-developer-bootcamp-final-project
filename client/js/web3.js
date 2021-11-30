@@ -4,7 +4,7 @@ const ethereumButton = document.querySelector('.enableEthereumButton');
 
 // var Web3 = require("web3");
 var abi;
-const contractAddress = "0x370B04Abe31cb26A1527902A2e9B15f6DB324F0E"
+const contractAddress = "0x3ceA65f6cDf42873b01b6Af9889F98D2321f0C5d"
 
 fetch('json/gwent-abi.json')
   .then(response => response.json())
