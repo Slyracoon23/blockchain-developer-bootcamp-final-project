@@ -2,13 +2,17 @@
 
 ## Project Demo
 
+![cover](screenshots/Screenshot from 2021-11-30 16-58-53.png)
+
+Forked project from [gwent-classic](https://github.com/asundr/gwent-classic) but with blockchain and card NFTs!
+
 ### Ropsten Deployed Vannilla JS App
 ** TODO **
 
-[https://condao-project.vercel.app/](https://condao-project.vercel.app/)
-- please switch metamask network to ropsten testnet first and refresh the page
-- due to the strict access control, functions in the demo app above can only be accessed via certain wallet addresses
-- please install this project locally following the instructions for interaction purpose
+[https://gwent-eth.herokuapp.com/](https://gwent-eth.herokuapp.com/
+- please switch metamask network to ropsten testnet first (should prompt user)
+- Now you are ready to mint, interaction details are under _Interaction Workflow_
+
 
 ### Demo Walkthrough Video
 ** TODO **
@@ -54,31 +58,30 @@ This gwent game uses the blockchain to mint and view your cards where you will b
 ## Project Installation
 
 ### Prerequisites
-- web-browser (e.g. Firefox, Chrome, etc.)
+- web-browser Chrome -- Other Browser may not work
 - `git checkout main`
-- npm package `serve`
+- npm
 
 ### Smart Contract
-** TODO **
+- open up remix `https://remix.ethereum.org/`
+-  copy `/contracts/cards.sol` into remix
+-  copy `/test/card_test.sol` into remix
+-  compile `0.6.0 Solc version`
+- deploy locally
+- `run the transaction
 
-- `npm install`
-- run local testnet in port `8545` with `ganache-cli`
-- `truffle migrate --network development` to migrate
-- `truffle test` for testing
-
+#### Testing
+- Use Solidiy unit Testing plugin on Remix
+- Run tests/card_test.sol
 ### Frontend Client
-- `cd client`
-- `npm install -g serve`
-- `sudo serve .`
-- open `http://localhost:5000`
-- switch metamask network to GANACHE-CLI
-    - RPC URL: `http://127.0.0.1:8545`
-    - Chain ID: `1337`
+- `npm install`
+- `npm start`
+- open `http://localhost:3000`
+- switch metamask network to Ropsten Network
 
-### Interaction Workflow Locally
-** TODO **
+### Interaction Workflow
 
-1. import wallet addresses from ganache-cli to metamask, switch network and preparation
+1. Open client, either locally or the sever url ()
     - accounts(0) is the estate developer's address (contract owner)
         - `CONDO` NFT can only be minted by the estate developer (contract owner)
         - a total supply of 1000 `CDT` are preminted to the address
@@ -108,7 +111,6 @@ This gwent game uses the blockchain to mint and view your cards where you will b
 ### Directory Structure
 - `client`: html/css/js frontend of the project
 - `contracts`: smart contracts
-- `migrations`: migration files for deploying contracts
 - `test`: tests for smart contracts
 
 ---
