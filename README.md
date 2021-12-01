@@ -15,9 +15,8 @@ Forked project from [gwent-classic](https://github.com/asundr/gwent-classic) but
 
 
 ### Demo Walkthrough Video
-** TODO **
 
-[https://youtu.be/U6djzW6sOnQ](https://youtu.be/U6djzW6sOnQ)
+[https://youtu.be/m_aABRWjRjw](https://youtu.be/m_aABRWjRjw)
 
 ### Ethereum Address For Certification
 - address: 0x9539F87b5A19753A002E01aE573A7A6d33561233
