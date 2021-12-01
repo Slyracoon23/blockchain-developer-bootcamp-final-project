@@ -2754,4 +2754,9 @@ ui.enablePlayer(false);
 // Deck maker code
 let dm = new DeckMaker();
 
-dm.makeYourDeck('realms');
+const showButton = document.querySelector('#show-btn');
+
+showButton.addEventListener('click', () => {
+    dm.makeYourDeck('realms');
+});
+
