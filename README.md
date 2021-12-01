@@ -2,14 +2,14 @@
 
 ## Project Demo
 
-![cover](screenshots/Screenshot from 2021-11-30 16-58-53.png)
+![cover](screenshots/front-page.png)
+
+![mint-page](screenshots/mint-page.png)
 
 Forked project from [gwent-classic](https://github.com/asundr/gwent-classic) but with blockchain and card NFTs!
 
 ### Ropsten Deployed Vannilla JS App
-** TODO **
-
-[https://gwent-eth.herokuapp.com/](https://gwent-eth.herokuapp.com/
+[https://gwent-eth.herokuapp.com/](https://gwent-eth.herokuapp.com/)
 - please switch metamask network to ropsten testnet first (should prompt user)
 - Now you are ready to mint, interaction details are under _Interaction Workflow_
 
@@ -29,7 +29,9 @@ Forked project from [gwent-classic](https://github.com/asundr/gwent-classic) but
 ### About Gwent
 Gwent is a turn-based card game between two players that can last two to three rounds. Players play one card each turn from a hand of 10 cards, chosen from a deck of 25. Each deck belongs to one of six factions that offer different play styles.
 
-This gwent game uses the blockchain to mint and view your cards where you will be able to play and battle other gwent players or AI.
+This gwent game uses the blockchain to mint and view your cards where you will be able to play and battle other gwent players or AI. 
+
+**NOTE:**  The game is not coupled with NFTs and are currently sepearte
 
 ### Key Features
 - Gwent Card Tokenization
@@ -45,7 +47,10 @@ This gwent game uses the blockchain to mint and view your cards where you will b
     1. Sign into metamask and change switch network to ropsten testnet
     2. Click Mint Cards
     3. mint one of your cards by clicking `mint me`
-    4. Refresh page, and you should see your newly minted card
+    4. You should see your newly minted card
+    5. Go back
+
+    **Extra:** Try playing the game, instructions are [here](https://github.com/asundr/gwent-classic)
 
 
 ### Tech Stack and Toolings
@@ -68,7 +73,7 @@ This gwent game uses the blockchain to mint and view your cards where you will b
 -  copy `/test/card_test.sol` into remix
 -  compile `0.6.0 Solc version`
 - deploy locally
-- `run the transaction
+- run the transaction, important functions `setMintAlive`, `mintCard` and `getDetails`
 
 #### Testing
 - Use Solidiy unit Testing plugin on Remix
@@ -81,37 +86,18 @@ This gwent game uses the blockchain to mint and view your cards where you will b
 
 ### Interaction Workflow
 
-1. Open client, either locally or the sever url ()
-    - accounts(0) is the estate developer's address (contract owner)
-        - `CONDO` NFT can only be minted by the estate developer (contract owner)
-        - a total supply of 1000 `CDT` are preminted to the address
-    - accounts(1-4) can be used as unit owners' addresses
-    - transfer 10 ETH fund to the condo treasury address as initial treasury funds
-        - treasury funds can only be transferred via succeeded proposal execution 
-2. mint `CONDO` NFT and transfer `CDT` from estate developer's address to the unit owners
-    - each of the unit owners should receive a `CONDO` NFT with a token ID representing their unit number (1-4)
-        - e.g unit#1 owner should receive a `CONDO` NFT with a token ID being `1`
-    - each of the unit owners should equally receive 250 `CDT` for a fair token distribution
-3. delegate votes to themselves from each of the unit owners' address
-    - `CDT` will only be counted as votes after delegation
-    - each of the unit owners should delegate votes to themselves
-4. make a proposal on community issues from one of the unit owners' address
-    - e.g. voluntarily work as a gardener of the property last month, unit#1 owner made a proposal on having 0.5 ETH as a reward
-        - `project description` should be a string
-        - `address` refers to the address of unit#1 owner, which is going to receive ETH funds from the treasury address
-        - `value` refers to the ETH funds that unit#1 owner is proposed to be receive
-    - after submitting a proposal, copy and save the proposal ID from the alert box as it is needed later
-5. cast a vote on the proposal from other unit owners' address
-    - in order to have a proposal succeeded and executed, other 3 unit owners should vote `FOR` the proposal
-    - since ganache-cli will not automatically create blocks without sending transactions, in case proposal state stays `ACTIVE`, manually sending dummy transactions would increase the block height and proposal state would get updated to `SUCCEEDED`
-6. execute the proposal from a unit owner
-    - `project description`, `address` and `value` should be exactly the same as the original input data of the proposal
-    - if the proposal is executed successfully, ETH balance of unit#1 owner's account should increase by 0.5 ETH while the balance of treasury address should decrease by 0.5 ETH
+1. Open client, either locally or the sever url https://gwent-eth.herokuapp.com/
+2. Click `Mint Cards` to change pages to NFT
+3. Mint a card of your choosing by clicking `Mint me` 
+4. Follow the transaction steps of metamask
+5. After waiting till your transaction success your newly minted card should now appear underneath the `Your Cards` section.
+6. Well Done! Now go back and play gwent!
 
 ### Directory Structure
 - `client`: html/css/js frontend of the project
 - `contracts`: smart contracts
 - `test`: tests for smart contracts
+- `screenshots`: Holds the images for the `Readme.md`
 
 ---
 
