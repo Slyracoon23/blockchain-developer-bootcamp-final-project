@@ -2753,3 +2753,5 @@ ui.enablePlayer(false);
 
 // Deck maker code
 let dm = new DeckMaker();
+
+dm.makeYourDeck('realms');
